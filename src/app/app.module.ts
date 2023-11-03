@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, SignUpComponent],
@@ -28,6 +29,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],
