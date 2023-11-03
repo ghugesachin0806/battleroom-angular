@@ -1,0 +1,29 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.navbar-brand {
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 16px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+button {
+  color: blue;
+  text-transform: uppercase;
+  margin-left: 8px;
+}
+
+button.active {
+  font-weight: bold; /* Corrected from "font-weight: 10" to a valid value like "bold" */
+}
+
+.custom-toolbar {
+  background-color: #ff0000; /* Replace with your desired color code or name */
+}
