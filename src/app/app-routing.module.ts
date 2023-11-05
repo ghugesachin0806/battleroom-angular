@@ -2,11 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth-components/login/login.component';
 import { SignUpComponent } from './auth-components/signup/signup.component';
+import { NoAuthGuard } from './auth-guards/noAuth-guard/no-auth.guard';
 
-const routes: Routes = [{path:'login',component:LoginComponent},{path:'signup',component:SignUpComponent}];
+const routes: Routes = [
+  { path: 'login', component: LoginComponent,canActivate:[NoAuthGuard] },
+  { path: 'signup', component: SignUpComponent,canActivate:[NoAuthGuard] },
+  {path:"user",loadChildren:()=>import("./user/user.module").then(m=>m.UserModule)}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
