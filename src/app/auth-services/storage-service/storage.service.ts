@@ -1,42 +1,50 @@
 import { Injectable } from '@angular/core';
 
-const TOKEN ='c_token';
-const USER  = 'c_user';
+const TOKEN = 'c_token';
+const USER = 'c_user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StorageService {
+  constructor() {}
 
-  constructor() { }
-
-  public saveUser(user:any){
+  public saveUser(user: any) {
     window.localStorage.removeItem(USER);
-    window.localStorage.setItem(USER,JSON.stringify(user));
+    window.localStorage.setItem(USER, JSON.stringify(user));
   }
 
-  public saveToken(token:string)
-  {
+  public saveToken(token: string) {
     window.localStorage.removeItem(TOKEN);
-    window.localStorage.setItem(TOKEN,token);
+    window.localStorage.setItem(TOKEN, token);
   }
 
-  static getToken(): string | null  {
+  static getUserId(): string {
+    const storedData = localStorage.getItem(USER);
+  
+    if (storedData !== null) {
+      const user = JSON.parse(storedData);
+      if (user.userId) {
+        return user.userId;
+      }
+    }
+    return '';
+  }
+  
+
+  static getToken(): string | null {
     return localStorage.getItem(TOKEN);
   }
 
-  static isUserLoggedIn()
-  {
-    if(this.getToken()==null)
-    {
+  static isUserLoggedIn() {
+    if (this.getToken() == null) {
       return false;
     }
 
     return true;
   }
 
-  static logout()
-  {
+  static logout() {
     window.localStorage.removeItem(TOKEN);
     window.localStorage.removeItem(USER);
   }
